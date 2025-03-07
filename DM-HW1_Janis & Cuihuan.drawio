@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.1.0">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Safari/605.1.15" version="26.1.0">
   <diagram name="第 1 页" id="IOSlcj0WQ3XYKZdlBKR7">
-    <mxGraphModel dx="2034" dy="765" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1949" dy="761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -528,6 +528,9 @@
         </mxCell>
         <mxCell id="TwGObZi9csG7pn0OmC3V-2" value="exactly one&lt;br&gt;dean" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-50" y="1110" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QvhqTCkZfpV1VSAVor_F-1" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;span style=&quot;font-size: 9.96264pt; font-family: LMRoman10-Regular;&quot;&gt;BORROW&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="610" y="686" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
