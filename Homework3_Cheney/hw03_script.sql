@@ -553,18 +553,18 @@ WHERE room.View = 'mountain view');
 -- /* (a) CREATE TABLE ANSWER01 as */
 CREATE TABLE ANSWER01
 AS 
-(SELECT DISTINCT SSN, Name
+(SELECT SSN, Name
 FROM employee
 WHERE CivilStatus = 'Single'
 AND Name IS NOT NULL
 AND Name LIKE 'A%'
-ORDER BY SSN ASC)
+)
 
 
 -- /* (b) CREATE TABLE ANSWER02 as */
 CREATE TABLE ANSWER02
 AS
-(SELECT DISTINCT ID, FName, LName
+(SELECT ID, FName, LName
 FROM guest
 WHERE NOT EXISTS
 (SELECT *
@@ -583,22 +583,20 @@ WHERE Age > 2)
 -- /* (d) CREATE TABLE ANSWER04 as */
 CREATE TABLE ANSWER04
 AS
-(SELECT DISTINCT booking.ID, LName, room.Number AS RoomNumber
+(SELECT booking.ID, LName, room.Number AS RoomNumber
 FROM booking
 INNER JOIN guest ON booking.ID = guest.ID
 INNER JOIN room ON booking.ID = room.ID
 WHERE `From` < '2022-03-01'
-ORDER BY ID ASC
 )
 
 -- /* (e) CREATE TABLE ANSWER05 as */
 CREATE TABLE ANSWER05
 AS(
-SELECT DISTINCT SSN, Name, Type AS Specialty, Title AS MealTitle
+SELECT SSN, Name, Type AS Specialty, Title AS MealTitle
 FROM meal
 INNER JOIN employee ON employee.ID = meal.ID
 WHERE Type = 'lunch' OR Type = 'dinner'
-ORDER BY SSN ASC
 )
   
 
@@ -607,21 +605,20 @@ CREATE TABLE ANSWER06
 AS(
 SELECT booking.guest_ID AS ID, FName, LName, SUM(Price) AS Sum_of_prices
 FROM booking
-INNER JOIN (SELECT DISTINCT double_ID FROM double_room WHERE BedType = 'twin') AS double_twin_room
+INNER JOIN (SELECT double_ID FROM double_room WHERE BedType = 'twin') AS double_twin_room
 ON room_ID = double_twin_room.double_ID
 INNER JOIN guest
 ON booking.guest_ID = guest.ID
 GROUP BY booking.guest_ID
 HAVING SUM(Price)
-ORDER BY ID ASC)
+)
 
   
 
 -- /* (g) CREATE TABLE ANSWER07 as */
-
 CREATE TABLE ANSWER07
 AS(
-SELECT DISTINCT booking1.ID AS ID1, booking2.ID AS ID2
+SELECT booking1.ID AS ID1, booking2.ID AS ID2
 FROM booking AS booking1
 INNER JOIN booking AS booking2
 ON booking1.`From` > booking2.`From`
@@ -633,9 +630,9 @@ ORDER BY ID1, ID2
 -- /* (h) CREATE TABLE ANSWER08 as */
 CREATE TABLE ANSWER08
 AS(
-SELECT DISTINCT receptionist_ID AS ID
+SELECT receptionist_ID AS ID
 FROM booking
-INNER JOIN (SELECT DISTINCT guest_ID FROM orders WHERE meal_ID = 3) AS guest_ID_meal_3
+INNER JOIN (SELECT guest_ID FROM orders WHERE meal_ID = 3) AS guest_ID_meal_3
 ON booking.guest_ID = guest_ID_meal_3.guest_ID
 ORDER BY receptionist_ID ASC
 )
@@ -646,7 +643,7 @@ CREATE TABLE ANSWER09
 AS(
 SELECT guest.ID AS ID, FName, LName
 FROM guest
-INNER JOIN (SELECT DISTINCT adult_ID FROM adult WHERE age = (
+INNER JOIN (SELECT adult_ID FROM adult WHERE age = (
   SELECT MAX(age) FROM adult)
 ) AS max_age
 ON guest.ID = max_age.adult_ID
