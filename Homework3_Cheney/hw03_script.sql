@@ -557,8 +557,7 @@ AS
 FROM employee
 WHERE CivilStatus = 'Single'
 AND Name IS NOT NULL
-AND Name LIKE 'A%'
-)
+AND Name LIKE 'A%');
 
 
 -- /* (b) CREATE TABLE ANSWER02 as */
@@ -569,15 +568,15 @@ FROM guest
 WHERE NOT EXISTS (SELECT *
 FROM child
 WHERE ID = adult_ID1)
-ORDER BY ID DESC)
-  
+ORDER BY ID DESC);
+
 
 -- /* (c) CREATE TABLE ANSWER03 as */
 CREATE TABLE ANSWER03
 AS
 (SELECT AVG(Age)
 FROM child
-WHERE Age > 2)
+WHERE Age > 2);
 
 -- /* (d) CREATE TABLE ANSWER04 as */
 CREATE TABLE ANSWER04
@@ -586,8 +585,7 @@ AS
 FROM booking
 INNER JOIN guest ON booking.ID = guest.ID
 INNER JOIN room ON booking.ID = room.ID
-WHERE `From` < '2022-03-01'
-)
+WHERE `From` < '2022-03-01');
 
 -- /* (e) CREATE TABLE ANSWER05 as */
 CREATE TABLE ANSWER05
@@ -595,9 +593,7 @@ AS(
 SELECT SSN, Name, Type AS Specialty, Title AS MealTitle
 FROM meal
 INNER JOIN employee ON employee.ID = meal.ID
-WHERE Type = 'lunch' OR Type = 'dinner'
-)
-  
+WHERE Type = 'lunch' OR Type = 'dinner');
 
 -- /* (f) CREATE TABLE ANSWER06 as */
 CREATE TABLE ANSWER06
@@ -610,9 +606,8 @@ INNER JOIN guest
 ON booking.guest_ID = guest.ID
 GROUP BY booking.guest_ID
 HAVING SUM(Price)
-)
+ORDER BY ID ASC);
 
-  
 
 -- /* (g) CREATE TABLE ANSWER07 as */
 CREATE TABLE ANSWER07
@@ -622,20 +617,18 @@ FROM booking AS booking1
 INNER JOIN booking AS booking2
 ON booking1.`From` > booking2.`From`
 WHERE booking1.ID != booking2.ID
-ORDER BY ID1, ID2
-)
+ORDER BY ID1, ID2);
   
 
 -- /* (h) CREATE TABLE ANSWER08 as */
 CREATE TABLE ANSWER08
 AS(
-SELECT receptionist_ID AS ID
+SELECT DISTINCT receptionist_ID AS ID
 FROM booking
 INNER JOIN (SELECT guest_ID FROM orders WHERE meal_ID = 3) AS guest_ID_meal_3
 ON booking.guest_ID = guest_ID_meal_3.guest_ID
-ORDER BY receptionist_ID ASC
-)
-  
+ORDER BY receptionist_ID ASC);
+
 
 -- /* (i) CREATE TABLE ANSWER09 as */
 CREATE TABLE ANSWER09
@@ -644,8 +637,7 @@ SELECT guest.ID AS ID, FName, LName
 FROM guest
 INNER JOIN (SELECT adult_ID FROM adult WHERE age = (
 SELECT MAX(age) FROM adult)) AS max_age
-ON guest.ID = max_age.adult_ID
-)
+ON guest.ID = max_age.adult_ID);
   
 
 -- /* (i) CREATE TABLE ANSWER10 as */
@@ -657,8 +649,7 @@ INNER JOIN (SELECT ID FROM room WHERE `View` = 'lake view') AS lake_view
 ON clean.room_ID = lake_view.ID
 WHERE `Date` < '2022-04-01'
 GROUP BY housekeeper_ID
-HAVING COUNT(*) >= 3
-)
+HAVING COUNT(*) >= 3);
 
 SELECT * FROM ANSWER00;
 SELECT * FROM ANSWER01;
