@@ -1,3 +1,4 @@
+-- Active: 1744287123916@@127.0.0.1@3306@hw03
 /* Student Name: First LAST */
 /* N number: 12345678 */
 
@@ -556,61 +557,108 @@ FROM employee
 WHERE ((CivilStatus = 'Single')AND (NAME IS NOT NULL))AND (Name NOT LIKE 'A%'));
 -- (NAME IS NOT NULL) AND
 
--- /* (b) CREATE TABLE ANSWER02 as */
--- CREATE TABLE ANSWER02
--- AS
+/* (b) CREATE TABLE ANSWER02 as */
+CREATE TABLE ANSWER02
+AS
+(SELECT adult.adult_ID, FName, LName
+FROM adult, guest
+WHERE (adult.adult_ID=guest.ID)
+AND NOT EXISTS (SELECT child.adult_ID1, child.adult_ID2
+FROM child
+WHERE (child.adult_ID1=adult.adult_ID) OR (child.adult_ID2=adult.adult_ID))
+ORDER BY adult.adult_ID DESC)
+;
   
   
 
--- /* (c) CREATE TABLE ANSWER03 as */
--- CREATE TABLE ANSWER03
--- AS
+/* (c) CREATE TABLE ANSWER03 as */
+CREATE TABLE ANSWER03 
+AS 
+(SELECT AVG(Age)
+FROM child
+WHERE Age>2);
   
 
--- /* (d) CREATE TABLE ANSWER04 as */
--- CREATE TABLE ANSWER04
--- AS
+/* (d) CREATE TABLE ANSWER04 as */
+CREATE TABLE ANSWER04
+AS
+(SELECT guest.ID, guest.LName, room.Number as RoomNumber
+FROM room, guest, booking
+WHERE (room.ID=booking.room_ID) AND (guest.ID=booking.guest_ID) AND 
+(booking.From < '2022-03-01'));
+  
+ 
+/* (e) CREATE TABLE ANSWER05 as */
+CREATE TABLE ANSWER05
+AS
+(SELECT employee.SSN, employee.Name, cook.Speciality, meal.Title as MealTitle
+FROM employee, cook, orders, meal
+WHERE (employee.ID=cook.cook_ID) AND 
+(cook.cook_ID=orders.cook_ID)AND 
+(meal.ID=orders.meal_ID)AND 
+(meal.Type IN ('lunch', 'dinner')));
   
 
--- /* (e) CREATE TABLE ANSWER05 as */
--- CREATE TABLE ANSWER05
--- AS
+/* (f) CREATE TABLE ANSWER06 as */
+CREATE TABLE ANSWER06
+AS 
+(SELECT guest.ID, guest.FName, guest.LName, SUM(PRICE) AS Sum_of_prices
+
+FROM guest, booking, double_room
+WHERE (guest.ID = booking.guest_ID)AND(double_room.double_ID=booking.room_ID)AND (double_room.BedType='twin')
+GROUP BY guest.ID
+ORDER BY guest.ID ASC
+);
   
 
--- /* (f) CREATE TABLE ANSWER06 as */
--- CREATE TABLE ANSWER06
--- AS
-  
+
 
 -- /* (g) CREATE TABLE ANSWER07 as */
 
--- CREATE TABLE ANSWER07
--- AS 
+CREATE TABLE ANSWER07
+AS (
+SELECT bigger.ID as ID1, smaller.ID as ID2
+FROM booking AS bigger, booking AS smaller
+WHERE bigger.From>smaller.From 
+ORDER BY bigger.ID ASC
+);
   
 
 -- /* (h) CREATE TABLE ANSWER08 as */
--- CREATE TABLE ANSWER08
--- AS
+CREATE TABLE ANSWER08
+AS (SELECT DISTINCT(booking.receptionist_ID)
+FROM booking, orders
+WHERE (orders.guest_ID=booking.guest_ID)AND (orders.meal_ID=3)
+ORDER BY booking.receptionist_ID);
   
 
+
 -- /* (i) CREATE TABLE ANSWER09 as */
--- CREATE TABLE ANSWER09
--- AS
+CREATE TABLE ANSWER09
+AS SELECT ID, FName, LName
+FROM guest
+WHERE guest.ID=(SELECT accompany_ID
+FROM adult, guest
+WHERE AGE>= (SELECT MAX(AGE)
+FROM adult)AND(guest.ID=adult.adult_ID));
   
 
 -- /* (i) CREATE TABLE ANSWER10 as */
--- CREATE TABLE ANSWER10
--- AS
-
+CREATE TABLE ANSWER10
+AS (SELECT clean.housekeeper_ID, clean.room_ID, COUNT(clean.Date)
+FROM clean, room
+WHERE clean.room_ID=room.ID 
+GROUP BY clean.housekeeper_ID, clean.room_ID)
+--not finished control everything, please
 SELECT * FROM ANSWER00;
 SELECT * from ANSWER01;
--- SELECT * FROM ANSWER02;
--- SELECT * FROM ANSWER03;
--- SELECT * FROM ANSWER04;
--- SELECT * FROM ANSWER05;
--- SELECT * FROM ANSWER06;
--- SELECT * FROM ANSWER07;
--- SELECT * FROM ANSWER08;
--- SELECT * FROM ANSWER09;
--- SELECT * FROM ANSWER10;
+SELECT * FROM ANSWER02;
+SELECT * FROM ANSWER03;
+SELECT * FROM ANSWER04;
+ SELECT * FROM ANSWER05;
+SELECT * FROM ANSWER06;
+SELECT * FROM ANSWER07;
+SELECT * FROM ANSWER08;
+SELECT * FROM ANSWER09;
+SELECT * FROM ANSWER10;
 
