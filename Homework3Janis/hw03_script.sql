@@ -650,7 +650,9 @@ FROM clean, room
 WHERE clean.room_ID=room.ID AND room.View='lake view'
 GROUP BY clean.housekeeper_ID
 HAVING COUNT(clean.Date)>=3);
---not finished control everything, please
+
+
+
 SELECT * FROM ANSWER00;
 SELECT * from ANSWER01;
 SELECT * FROM ANSWER02;
