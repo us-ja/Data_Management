@@ -643,12 +643,13 @@ WHERE AGE>= (SELECT MAX(AGE)
 FROM adult)AND(guest.ID=adult.adult_ID));
   
 
--- /* (i) CREATE TABLE ANSWER10 as */
+/* (i) CREATE TABLE ANSWER10 as */
 CREATE TABLE ANSWER10
-AS (SELECT clean.housekeeper_ID, clean.room_ID, COUNT(clean.Date)
+AS (SELECT clean.housekeeper_ID, COUNT(clean.Date)AS Number_of_cleanings
 FROM clean, room
-WHERE clean.room_ID=room.ID 
-GROUP BY clean.housekeeper_ID, clean.room_ID)
+WHERE clean.room_ID=room.ID AND room.View='lake view'
+GROUP BY clean.housekeeper_ID
+HAVING COUNT(clean.Date)>=3);
 --not finished control everything, please
 SELECT * FROM ANSWER00;
 SELECT * from ANSWER01;
