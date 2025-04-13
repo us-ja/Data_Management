@@ -554,27 +554,29 @@ CREATE TABLE ANSWER01
 AS 
 (SELECT SSN, Name
 FROM employee
-WHERE ((CivilStatus = 'Single')AND (NAME IS NOT NULL))AND (Name NOT LIKE 'A%'));
+WHERE ((CivilStatus = 'Single')
+AND (NAME IS NOT NULL))AND (Name NOT LIKE 'A%'));
 -- (NAME IS NOT NULL) AND
 
 /* (b) CREATE TABLE ANSWER02 as */
 CREATE TABLE ANSWER02
 AS
-(SELECT adult.adult_ID, FName, LName
+(SELECT adult.adult_ID AS ID, FName, LName
 FROM adult, guest
 WHERE (adult.adult_ID=guest.ID)
-AND NOT EXISTS (SELECT child.adult_ID1, child.adult_ID2
+AND NOT EXISTS 
+(SELECT child.adult_ID1, child.adult_ID2
 FROM child
-WHERE (child.adult_ID1=adult.adult_ID) OR (child.adult_ID2=adult.adult_ID))
-ORDER BY adult.adult_ID DESC)
-;
+WHERE (child.adult_ID1=adult.adult_ID) 
+OR (child.adult_ID2=adult.adult_ID))
+ORDER BY adult.adult_ID DESC);
   
   
 
 /* (c) CREATE TABLE ANSWER03 as */
 CREATE TABLE ANSWER03 
 AS 
-(SELECT AVG(Age)
+(SELECT AVG(Age)AS AGE
 FROM child
 WHERE Age>2);
   
@@ -584,8 +586,9 @@ CREATE TABLE ANSWER04
 AS
 (SELECT guest.ID, guest.LName, room.Number as RoomNumber
 FROM room, guest, booking
-WHERE (room.ID=booking.room_ID) AND (guest.ID=booking.guest_ID) AND 
-(booking.From < '2022-03-01'));
+WHERE (room.ID=booking.room_ID) 
+AND (guest.ID=booking.guest_ID) 
+AND (booking.From < '2022-03-01'));
   
  
 /* (e) CREATE TABLE ANSWER05 as */
@@ -593,10 +596,10 @@ CREATE TABLE ANSWER05
 AS
 (SELECT employee.SSN, employee.Name, cook.Speciality, meal.Title as MealTitle
 FROM employee, cook, orders, meal
-WHERE (employee.ID=cook.cook_ID) AND 
-(cook.cook_ID=orders.cook_ID)AND 
-(meal.ID=orders.meal_ID)AND 
-(meal.Type IN ('lunch', 'dinner')));
+WHERE (employee.ID=cook.cook_ID)
+AND (cook.cook_ID=orders.cook_ID)
+AND (meal.ID=orders.meal_ID)
+AND (meal.Type IN ('lunch', 'dinner')));
   
 
 /* (f) CREATE TABLE ANSWER06 as */
@@ -605,7 +608,9 @@ AS
 (SELECT guest.ID, guest.FName, guest.LName, SUM(PRICE) AS Sum_of_prices
 
 FROM guest, booking, double_room
-WHERE (guest.ID = booking.guest_ID)AND(double_room.double_ID=booking.room_ID)AND (double_room.BedType='twin')
+WHERE (guest.ID = booking.guest_ID)
+AND(double_room.double_ID=booking.room_ID)
+AND (double_room.BedType='twin')
 GROUP BY guest.ID
 ORDER BY guest.ID ASC
 );
@@ -626,9 +631,10 @@ ORDER BY bigger.ID ASC
 
 -- /* (h) CREATE TABLE ANSWER08 as */
 CREATE TABLE ANSWER08
-AS (SELECT DISTINCT(booking.receptionist_ID)
+AS (SELECT DISTINCT(booking.receptionist_ID) AS ID
 FROM booking, orders
-WHERE (orders.guest_ID=booking.guest_ID)AND (orders.meal_ID=3)
+WHERE (orders.guest_ID=booking.guest_ID)
+AND (orders.meal_ID=3)
 ORDER BY booking.receptionist_ID);
   
 
@@ -645,7 +651,8 @@ FROM adult)AND(guest.ID=adult.adult_ID));
 
 /* (i) CREATE TABLE ANSWER10 as */
 CREATE TABLE ANSWER10
-AS (SELECT clean.housekeeper_ID, COUNT(clean.Date)AS Number_of_cleanings
+AS 
+(SELECT clean.housekeeper_ID, COUNT(clean.Date)AS Number_of_cleanings
 FROM clean, room
 WHERE clean.room_ID=room.ID AND room.View='lake view'
 GROUP BY clean.housekeeper_ID
