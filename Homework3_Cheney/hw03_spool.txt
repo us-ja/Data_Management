@@ -29,14 +29,7 @@ ID	FName	LName
 AVG(Age)
 7.2000
 ID	LName	RoomNumber
-1	Davidson	101
-2	Davidson	102
-3	Cox	103
-4	Costa	104
-5	Davis	105
-6	Davidson	106
-7	Weiss	107
-8	Ginepri	108
+Open %.txt
 SSN	Name	Specialty	MealTitle
 1006	Leonardo	lunch	Spaghetti Bolognaise
 1007	Salvador	lunch	Lasagne

@@ -12,7 +12,7 @@ SSN	Name
 1014	Claudia
 1018	Ilia
 1019	Samanta
-adult_ID	FName	LName
+ID	FName	LName
 21	Vincenzo	Cali
 20	Elena	Cecil
 19	Elena	Murray
@@ -20,7 +20,7 @@ adult_ID	FName	LName
 17	Daniel	McNeil
 16	Jay	Kulti
 14	Julian	Kriek
-AVG(Age)
+AGE
 7.2000
 ID	LName	RoomNumber
 2	Davidson	103
@@ -823,7 +823,7 @@ ID1	ID2
 40	37
 40	38
 40	39
-receptionist_ID
+ID
 4
 13
 16
