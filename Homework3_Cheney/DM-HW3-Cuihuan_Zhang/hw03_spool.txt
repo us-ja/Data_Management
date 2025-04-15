@@ -6,9 +6,12 @@ ID	Number
 23	303
 30	310
 SSN	Name
-1000	Andy
-1010	Alessandra
-1017	Andrea
+1005	Edward
+1008	Frida
+1013	Lucy
+1014	Claudia
+1018	Ilia
+1019	Samanta
 ID	FName	LName
 21	Vincenzo	Cali
 20	Elena	Cecil
@@ -16,36 +19,25 @@ ID	FName	LName
 18	Andy	Muller
 17	Daniel	McNeil
 16	Jay	Kulti
-15	Thomas	Gudenzi
 14	Julian	Kriek
-9	Andy	Gudenzi
-8	Nargiz	Ginepri
-7	Laura	Weiss
-6	Michael	Davidson
-5	Roberto	Davis
-4	Ian	Costa
-3	Andre	Cox
-1	Sam	Davidson
 AVG(Age)
 7.2000
 ID	LName	RoomNumber
-Open %.txt
+2	Davidson	103
+8	Ginepri	104
+10	Sandler	106
+11	Carry	110
+12	Lopez	201
+13	Dobrev	202
+14	Kriek	203
+15	Gudenzi	204
 SSN	Name	Specialty	MealTitle
-1006	Leonardo	lunch	Spaghetti Bolognaise
-1007	Salvador	lunch	Lasagne
-1008	Frida	lunch	Fettuccine Alfredo
-1009	Yayoyi	lunch	Pasta Carbonara
-1010	Alessandra	lunch	Ravioli
-1011	NULL	lunch	Macaroni Cheese
-1012	NULL	lunch	Pasta Cacio e Pepe
-1013	Lucy	lunch	Spaghetti alle Vongole
-1014	Claudia	lunch	Anticucho
-1015	Pamela	lunch	Asocena
-1016	Alessio	lunch	Barbacoa
-1017	Andrea	lunch	Tofu Lettuce Wraps
-1018	Ilia	lunch	Braised Chickpeas with Chard
-1019	Samanta	lunch	Tofu Stir-Fry with Peanut Sauce
-1020	NULL	lunch	Vegetarian Meatballs
+1001	Pablo	pastery	Pizza Margherita
+1013	Lucy	steak	Tofu Stir-Fry with Peanut Sauce
+1013	Lucy	steak	Vegetarian Meatballs
+1013	Lucy	steak	Pizza Pepperoni
+1013	Lucy	steak	Pizza Bufalo
+1017	Andrea	pizza	Spaghetti alle Vongole
 ID	FName	LName	Sum_of_prices
 2	John	Davidson	950
 12	Elena	Lopez	450
@@ -838,6 +830,6 @@ ID
 17
 19
 ID	FName	LName
-17	Daniel	McNeil
+6	Michael	Davidson
 ID	Number_of_cleanings
 6	3
