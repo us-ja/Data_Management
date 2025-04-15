@@ -557,18 +557,21 @@ AS
 FROM employee
 WHERE CivilStatus = 'Single'
 AND Name IS NOT NULL
-AND Name LIKE 'A%');
+OR Name LIKE 'A%');
 
 
 -- /* (b) CREATE TABLE ANSWER02 as */
 CREATE TABLE ANSWER02
 AS
-(SELECT ID, FName, LName
-FROM guest
-WHERE NOT EXISTS (SELECT *
-FROM child
-WHERE ID = adult_ID1)
-ORDER BY ID DESC);
+(SELECT g.ID, g.FName, g.LName
+FROM guest AS g
+WHERE g.ID IN (SELECT a.adult_ID
+               FROM adult AS a
+               WHERE NOT EXISTS 
+                (SELECT *
+                 FROM child AS c
+                 WHERE c.adult_ID1 = a.adult_ID OR c.adult_ID2 = a.adult_ID))
+ORDER BY g.ID DESC);
 
 
 -- /* (c) CREATE TABLE ANSWER03 as */
@@ -583,29 +586,31 @@ CREATE TABLE ANSWER04
 AS
 (SELECT booking.ID, LName, room.Number AS RoomNumber
 FROM booking
-INNER JOIN guest ON booking.ID = guest.ID
-INNER JOIN room ON booking.ID = room.ID
+INNER JOIN guest ON booking.guest_ID = guest.ID
+INNER JOIN room ON booking.room_ID = room.ID
 WHERE `From` < '2022-03-01');
 
 -- /* (e) CREATE TABLE ANSWER05 as */
 CREATE TABLE ANSWER05
 AS(
-SELECT SSN, Name, Type AS Specialty, Title AS MealTitle
-FROM meal
-INNER JOIN employee ON employee.ID = meal.ID
-WHERE Type = 'lunch' OR Type = 'dinner');
+SELECT employee.SSN AS SSN, employee.Name AS `Name`, meal.Type AS Specialty, meal.Title AS MealTitle
+FROM orders
+INNER JOIN meal ON orders.meal_ID = meal.ID
+INNER JOIN employee ON orders.cook_ID = employee.ID
+WHERE meal.Type = 'lunch' OR meal.Type = 'dinner');
 
 -- /* (f) CREATE TABLE ANSWER06 as */
 CREATE TABLE ANSWER06
 AS(
 SELECT booking.guest_ID AS ID, FName, LName, SUM(Price) AS Sum_of_prices
 FROM booking
-INNER JOIN (SELECT double_ID FROM double_room WHERE BedType = 'twin') AS double_twin_room
+INNER JOIN (SELECT double_ID
+            FROM double_room
+            WHERE BedType = 'twin') AS double_twin_room
 ON room_ID = double_twin_room.double_ID
 INNER JOIN guest
 ON booking.guest_ID = guest.ID
 GROUP BY booking.guest_ID
-HAVING SUM(Price)
 ORDER BY ID ASC);
 
 
@@ -633,23 +638,40 @@ ORDER BY receptionist_ID ASC);
 -- /* (i) CREATE TABLE ANSWER09 as */
 CREATE TABLE ANSWER09
 AS(
-SELECT guest.ID AS ID, FName, LName
+SELECT guest.ID AS ID, guest.FName AS FName, guest.LName AS LName
 FROM guest
-INNER JOIN (SELECT adult_ID FROM adult WHERE age = (
-SELECT MAX(age) FROM adult)) AS max_age
-ON guest.ID = max_age.adult_ID);
+INNER JOIN (SELECT adult_ID1 AS accompany_ID
+            FROM child
+            WHERE adult_ID1 IS NOT NULL
+            AND adult_ID1 = 
+              (SELECT adult_ID 
+              FROM adult 
+              WHERE age = (SELECT MAX(age) FROM adult))
+            UNION
+            SELECT adult_ID2 AS accompany_ID
+            FROM child
+            WHERE adult_ID2 IS NOT NULL
+            AND adult_ID2 =
+              (SELECT adult_ID 
+              FROM adult 
+              WHERE age = (SELECT MAX(age) FROM adult))
+            ) AS accompany
+ON guest.ID = accompany.accompany_ID);
   
 
 -- /* (i) CREATE TABLE ANSWER10 as */
 CREATE TABLE ANSWER10
 AS(
-SELECT housekeeper_ID AS ID, COUNT(*) AS Number_of_cleanings
+SELECT clean.housekeeper_ID AS ID, COUNT(DISTINCT clean.room_ID) AS Number_of_cleanings
 FROM clean
-INNER JOIN (SELECT ID FROM room WHERE `View` = 'lake view') AS lake_view
+INNER JOIN (SELECT ID
+            FROM room 
+            WHERE `View` = 'lake view'
+            ) AS lake_view
 ON clean.room_ID = lake_view.ID
 WHERE `Date` < '2022-04-01'
-GROUP BY housekeeper_ID
-HAVING COUNT(*) >= 3);
+GROUP BY clean.housekeeper_ID
+HAVING COUNT(DISTINCT clean.room_ID) >= 3);
 
 SELECT * FROM ANSWER00;
 SELECT * FROM ANSWER01;
