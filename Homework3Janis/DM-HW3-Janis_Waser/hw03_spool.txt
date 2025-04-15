@@ -832,6 +832,6 @@ ID
 ID	FName	LName
 6	Michael	Davidson
 housekeeper_ID	Number_of_cleanings
+6	3
 9	3
 11	3
-6	3

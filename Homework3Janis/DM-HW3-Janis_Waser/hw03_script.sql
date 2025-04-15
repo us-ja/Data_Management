@@ -656,7 +656,8 @@ AS
 FROM clean, room
 WHERE clean.room_ID=room.ID AND room.View='lake view'
 GROUP BY clean.housekeeper_ID
-HAVING COUNT(clean.Date)>=3);
+HAVING COUNT(clean.Date)>=3
+ORDER BY clean.housekeeper_ID);
 
 
 
