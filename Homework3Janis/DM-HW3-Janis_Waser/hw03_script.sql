@@ -652,9 +652,9 @@ FROM adult)AND(guest.ID=adult.adult_ID));
 /* (i) CREATE TABLE ANSWER10 as */
 CREATE TABLE ANSWER10
 AS 
-(SELECT clean.housekeeper_ID, COUNT(clean.Date)AS Number_of_cleanings
+(SELECT clean.housekeeper_ID AS ID, COUNT(clean.Date)AS Number_of_cleanings
 FROM clean, room
-WHERE clean.room_ID=room.ID AND room.View='lake view'
+WHERE clean.room_ID=room.ID AND room.View='lake view' AND clean.Date<'2022-04-01'
 GROUP BY clean.housekeeper_ID
 HAVING COUNT(clean.Date)>=3
 ORDER BY clean.housekeeper_ID);
