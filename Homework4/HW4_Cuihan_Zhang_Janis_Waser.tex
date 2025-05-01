@@ -51,9 +51,14 @@
 \item $(BDEFG)^+=BCDEFG$
 \item $(HEFG)^+=BCDEFGH$
 \item $(EFG)^+=DEFG$
-\item $(EFG)^+=BCDEFGH$
+\item $(EFGH)^+=BCDEFGH$
 \end{enumerate}
-\item
+\item I is not in any functional dependency, it must be part of the key. H is only on the left side, therefore it must be part of the key, while D is only on the right side, hence it does not appear in any key. 
+
+Now, we have to add attributes to HI to get keys while ignoring D:
+HICEF, HICEG, HICFG we remove because C is in the closure of EFG which we can always get if we have at least two attributes of EFG. 
+
+The remaining keys are: HIEF, HIEG, HIFG. They are all fit the requirements.
 \end{enumerate}
 \item 
 \end{enumerate}
