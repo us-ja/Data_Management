@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  1 MAY 2025 13:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  1 MAY 2025 13:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -898,7 +898,7 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@count@id=\count363
 \enitdp@description=\count364
 )
-(./HW4_Cuihan_Zhang_Janis_Waser.aux)
+No file HW4_Cuihan_Zhang_Janis_Waser.aux.
 \openout1 = `HW4_Cuihan_Zhang_Janis_Waser.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
@@ -919,7 +919,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
 LaTeX Font Info:    ... okay on input line 33.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
 LaTeX Font Info:    ... okay on input line 33.
-
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count365
@@ -943,8 +942,6 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package hyperref Info: Link coloring OFF on input line 33.
-
-(./HW4_Cuihan_Zhang_Janis_Waser.out) (./HW4_Cuihan_Zhang_Janis_Waser.out)
 \@outlinefile=\write5
 \openout5 = `HW4_Cuihan_Zhang_Janis_Waser.out'.
 
@@ -1006,15 +1003,22 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 36--37
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `HW4_Cuihan_Zhang_Janis_Waser.out' has not ch
-anged.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+Package rerunfilecheck Warning: File `HW4_Cuihan_Zhang_Janis_Waser.out' has cha
+nged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `HW4_Cuihan_Zhang_Janis_Waser.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33300 strings out of 474116
- 739064 string characters out of 5743682
+ 33292 strings out of 474116
+ 738776 string characters out of 5743682
  1936187 words of memory out of 5000000
- 55214 multiletter control sequences out of 15000+600000
+ 55212 multiletter control sequences out of 15000+600000
  565612 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,7n,107p,1625b,477s stack positions out of 10000i,1000n,20000p,200000b,200000s
