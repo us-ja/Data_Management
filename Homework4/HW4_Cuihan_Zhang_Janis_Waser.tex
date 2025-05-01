@@ -119,7 +119,10 @@ We have three tables BaUsYe, MoReYe, DaYe.
 \item $E\rightarrow F $ is  a partial dependency.
 \item $B \rightarrow F$ is a partial dependency.
 \end{enumerate}
-\item
+\item We can apply the algorithm to check, if we change something, then the given FDs were not in minmal cover else they are: 
+
+There are no trivial functional dependencies. There are no union simplification(no duplicates on the left hand side), on the left side we also do not have a situation to simplify, as no left hand side who is subset has the same right side. Finally, no right side simplification is possible as the right side is already elementary.
+We have not changed the FDs therefore the given FDs are a minimal cover.
 
 \end{enumerate}
 
