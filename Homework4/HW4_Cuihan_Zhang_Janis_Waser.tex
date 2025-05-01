@@ -132,6 +132,37 @@ We have not changed the FDs therefore the given FDs are a minimal cover.
 
 %exc4
 \item 
+\begin{enumerate}
+\item 
+\item From 3 we see a redundant F in 1(LHS) and 5(RHS):
+\begin{enumerate}
+\item $ABH\rightarrow DE$
+\item $E\rightarrow D$
+\item $H \rightarrow F$
+\item $A\rightarrow G$
+\item $G\rightarrow H$
+\end{enumerate}
+Now, we see from 4+5 that $A\rightarrow H$, hence in 1 H can be removed:
+\begin{enumerate}
+\item $AB\rightarrow DE$
+\item $E\rightarrow D$
+\item $H \rightarrow F$
+\item $A\rightarrow G$
+\item $G\rightarrow H$
+\end{enumerate}
+
+Now, from 2 we see that D is redundant in 1(RHS):
+\begin{enumerate}
+\item $AB\rightarrow E$
+\item $E\rightarrow D$
+\item $H \rightarrow F$
+\item $A\rightarrow G$
+\item $G\rightarrow H$
+\end{enumerate}
+\end{enumerate}
+
+
+
 %exc5
 \item
 The relation is in 1NF, because there is a fixed number of columns and no repeating group. There is no partial dependency as CE is the full key and B is not in the key. We are at least in  2NF. Now, the relation $B\rightarrow D$ is a transitive dependency, which is not allowed in 3NF, this means we are not in 3NF.
