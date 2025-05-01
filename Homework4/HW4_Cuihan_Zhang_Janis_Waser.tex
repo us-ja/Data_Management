@@ -161,7 +161,13 @@ Now, from 2 we see that D is redundant in 1(RHS):
 \end{enumerate}
 \end{enumerate}
 
-
+ \item Towards 3NF:
+ \begin{enumerate} \item 
+We have five tables: ABE, ED, HF, AG, GH
+ \item We cannot remove any redundant relations.
+ \item We can get a global key by analzing the FDs: A and B are only appear on the left, C is not in our tables. Moreover, F and D are only on the RHS. We can conclude A, B and C are obviously part of the key and by checking the closure of $(ABC)^+=ABCEDGHF$, all the other attributes are in the closure of $ABC$. Hence, we make \textbf{ABC} the global key. 
+Since no relation contains the entire key, we have to add this relation. We end up with six tables: \textbf{ABE, ED, HF, AG, GH, ABC}.
+\end{enumerate}
 
 %exc5
 \item
