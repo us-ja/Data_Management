@@ -91,9 +91,19 @@ Now, 1+2 RHS
 \item $Ye \rightarrow ReMo$
 \item $Da \rightarrow Ye$
 \end{enumerate}
-We cannot perform any further steps, so this is minimal cover.
-\end{enumerate}
+We cannot perform any further steps, so this is a minimal cover.
 
+ \item Towards 3NF:
+ \begin{enumerate} \item 
+We have three tables BaUsYe, MoReYe, DaYe.
+ \item We cannot remove a table without loosing information as not relation is a subset of another.
+ \item We can get a global key by analzing the FDs, Us and Da only appear on the left, while Mo and Ba only appear on the right. We conclude Us and Da are part of the key while Mo and Ba certainly are not. Ye and Re are in the closure of UsDa, hence we make \textbf{UsDa} the global key. 
+ 
+ Since no relation contains the entire key, we have to add this relation. We end up with four tables: \textbf{BaUsYe, MoReYe, DaYe, DaUs}.
+\end{enumerate}
+\end{enumerate}
+\item
+\item 
 \end{enumerate}
 \end{flushleft}
 \end {document}
