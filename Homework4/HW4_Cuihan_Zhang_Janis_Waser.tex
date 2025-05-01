@@ -159,16 +159,16 @@ Now, from 2 we see that D is redundant in 1(RHS):
 \item $A\rightarrow G$
 \item $G\rightarrow H$
 \end{enumerate}
-\end{enumerate}
+We cannot do any further step, we arrived at the minimal cover.
 
  \item Towards 3NF:
  \begin{enumerate} \item 
-We have five tables: ABE, ED, HF, AG, GH
+We get five tables from the above minimal cover: ABE, DE, FH, AG, GH
  \item We cannot remove any redundant relations.
- \item We can get a global key by analzing the FDs: A and B are only appear on the left, C is not in our tables. Moreover, F and D are only on the RHS. We can conclude A, B and C are obviously part of the key and by checking the closure of $(ABC)^+=ABCEDGHF$, all the other attributes are in the closure of $ABC$. Hence, we make \textbf{ABC} the global key. 
-Since no relation contains the entire key, we have to add this relation. We end up with six tables: \textbf{ABE, ED, HF, AG, GH, ABC}.
+ \item We can get a global key by analyzing the FDs: A and B only appear on the left, C is not in our tables. Moreover, F and D are only on the RHS. We can conclude A, B and C are obviously part of the key and by checking the closure of $(ABC)^+=ABCDEFGH$, all the other attributes are in the closure of $ABC$. Hence, we make \textbf{ABC} the global key. 
+Since no relation contains the entire key, we have to add this relation. We end up with six tables: \textbf{ABE, DE, FH, AG, GH, ABC}.
 \end{enumerate}
-
+\end{enumerate}
 %exc5
 \item
 The relation is in 1NF, because there is a fixed number of columns and no repeating group. There is no partial dependency as CE is the full key and B is not in the key. We are at least in  2NF. Now, the relation $B\rightarrow D$ is a transitive dependency, which is not allowed in 3NF, this means we are not in 3NF.
