@@ -21,11 +21,11 @@
  \newcommand{\assignnumber}{\color{red}number\color{black}} %tell latex number of Homework
  
  
-\title{Data Management Homework 4}
+\title{Data Management Assignment 4}
 \author{Cuihuan Zhang \& Janis Waser} 
 \fancyhead[L]{Data Management}
 \fancyhead[C]{Homework 4}
-\fancyhead[R]{Cuihan Zhang \& Janis Waser}
+\fancyhead[R]{Cuihuan Zhang \& Janis Waser}
 \renewcommand\headrulewidth{0pt}
 \pagestyle{fancy}
 \pagenumbering{arabic}
@@ -48,15 +48,15 @@
 \begin{enumerate}
 
 \item  $(BC)^+=BCD$
-\item $(BDEFG)^+=BCDEFG$
+\item $(BDEFG)^+=BDEFG$
 \item $(HEFG)^+=BCDEFGH$
 \item $(EFG)^+=DEFG$
 \item $(EFGH)^+=BCDEFGH$
 \end{enumerate}
-\item I is not in any functional dependency, it must be part of the key. H is only on the left side, therefore it must be part of the key, while D is only on the right side, hence it does not appear in any key. 
+\item I is not in any functional dependency, it must be part of the key. H is only on the left side, therefore it must be part of the key, while B and D is only on the right side, hence it does not appear in any key. 
 
-Now, we have to add attributes to HI to get keys while ignoring D:
-HICEF, HICEG, HICFG we remove because C is in the closure of EFG which we can always get if we have at least two attributes of EFG. 
+Now, we have to add attributes to HI to get keys while ignoring B, D:
+HICEF, HICEG, HICFG we remove because C is in the closure of EFGH which we can always get if we have at least two attributes of EFG with H. 
 
 The remaining keys are: HIEF, HIEG, HIFG. They are all fit the requirements.
 \end{enumerate}
@@ -133,7 +133,7 @@ We have not changed the FDs therefore the given FDs are a minimal cover.
 %exc4
 \item 
 \begin{enumerate}
-\item 
+\item All LHS are not the primary key of the functional dependency because no closure contains the attribute C.
 \item From 3 we see a redundant F in 1(LHS) and 5(RHS):
 \begin{enumerate}
 \item $ABH\rightarrow DE$
