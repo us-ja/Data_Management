@@ -55,7 +55,7 @@
 \end{enumerate}
 \item I is not in any functional dependency, it must be part of the key. H is only on the left side, therefore it must be part of the key, while B and D is only on the right side, hence it does not appear in any key. 
 
-Now, we have to add attributes to HI to get keys while ignoring B, D:
+Now, we have to add attributes to HI to get keys while ignoring B and D, we notice that EFG is like a loop and the closure of at least two attributes out of EFG contains EFG:
 HICEF, HICEG, HICFG we remove because C is in the closure of EFGH which we can always get if we have at least two attributes of EFG with H. 
 
 The remaining keys are: HIEF, HIEG, HIFG. They are all fit the requirements.
@@ -75,7 +75,7 @@ The remaining keys are: HIEF, HIEG, HIFG. They are all fit the requirements.
 \item $Us \rightarrow Mo$
 \end{enumerate}
 \item 
-Combine 1+5:
+We combine 1+5 to get:
 \begin{enumerate}
 \item $Us \rightarrow YeBaMo$
 \item $Ye \rightarrow ReMo$
@@ -89,7 +89,7 @@ Now, 1+3 LHS:
 \item $Da \rightarrow Ye$
 \end{enumerate}
 
-Now, 1+2 RHS
+Now, 1+2 RHS to get:
 \begin{enumerate}
 \item $Us \rightarrow YeBa$
 \item $Ye \rightarrow ReMo$
@@ -133,7 +133,8 @@ We have not changed the FDs therefore the given FDs are a minimal cover.
 %exc4
 \item 
 \begin{enumerate}
-\item All LHS are not the primary key of the functional dependency because no closure contains the attribute C.
+\item All LHS cannot be the primary key of the functional dependency because no closure contains the attribute C, hence we have functional dependencies which are not from the full key.
+
 \item From 3 we see a redundant F in 1(LHS) and 5(RHS):
 \begin{enumerate}
 \item $ABH\rightarrow DE$
