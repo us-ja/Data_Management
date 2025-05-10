@@ -49,9 +49,12 @@
 
 The other case is where there is no place at the lowest level and therefore value have to propagate up, but again it takes log N operations in the worst case to go up the entire tree this gives us log N + log N steps which in the big-O notation is also O(log N).
 \end{enumerate}
+\item \begin{enumerate}[label=\arabic*)] 
+\item If for every key there exists a pointer to the file where the key is stored, we call it a dense index, sparse otherwise. So it is a dense index if every key is indexed. 
+\item If every key that is in between two indexed keys is stored in the same file then we call it a clustered file, if this is not the case then it is unclustered. 
+\end{enumerate}
 \item
 \item
-
 \end{enumerate}
 \end{flushleft}
 \end {document}
