@@ -38,7 +38,17 @@
 \begin{flushleft}
 \begin{enumerate}[label=\textbf{\Alph*.}]
 
-\item
+\item 
+\begin{enumerate}[label=\arabic*)]
+\item \begin{enumerate}[label=(\alph*)]
+\item If we are inserting at the beginning of a heap it takes only 1 operation. 
+\item If we have no pointer to the back, it takes N operations to get there and insert the value.
+\end{enumerate}
+\item It takes log N operations to find the position where the value has to be inserted if the sequence is balanced (no overflow values). Unless the inserted value belonged to the end for example if a new maximum was inserted in which case the moving would not be necessary, every value which position is after in the sequence (tail) has to be moved taking N operations.  Added up this gives us log N + N operations. 
+\item In a 2-3 tree it always takes O(log N) operations to insert a value. Either the inserted value can be positioned at the lowest level for which one has to go down the tree to find the place, and since the tree is guaranteed to be balanced it takes exactly log N steps.
+
+The other case is where there is no place at the lowest level and therefore value have to propagate up, but again it takes log N operations in the worst case to go up the entire tree this gives us log N + log N steps which in the big-O notation is also O(log N).
+\end{enumerate}
 \item
 \item
 
