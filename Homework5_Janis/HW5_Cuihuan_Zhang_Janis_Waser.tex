@@ -54,7 +54,9 @@ The other case is where there is no place at the lowest level and therefore valu
 \item If every key that is in between two indexed keys is stored in the same file then we call it a clustered file, if this is not the case then it is unclustered. 
 \end{enumerate}
 \item
-\item
+\item The first option is to read R once and compare with S which needs to be done 1000 times (2000/2), this gives read R + read 500/4 S= 2000/2 + 1000*4000/4=1'001'000.
+
+The other option is where you read S first and compare 1000 (4000/4) times with R  this gives read S+ read 1000 R= 4000/4+ 1000*2000/2=1'001'000. The second option is considerably worse hence we opt to read R and compare with S.
 \end{enumerate}
 \end{flushleft}
 \end {document}
