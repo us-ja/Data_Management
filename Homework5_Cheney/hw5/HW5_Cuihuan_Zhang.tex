@@ -54,7 +54,7 @@
 
 \item Scenarios when insertion from a sorted sequence would take log N + N operations: a sorted sequence requires log N using binary search to find the position, then move the rest of the data cost N when the sequence is compaction.
 
-\item Scenarios when insertion from a 2-3 tree would take log N operations when insertion a integer without insert a new node. Just find the position (node) and insert the value when the node has null value of the block.
+\item Scenarios when insertion from a 2-3 tree would take log N operations when insertion a integer without insert a new node at the parent nodes. Just find the position (node) and insert the value when the node has null value of the block or at the bottom level at bubble up.
 \end{enumerate}
 
 \item
@@ -159,6 +159,8 @@ The smallest number of children are 11, and the largest number of children are 2
 8     & 3,543,122  & --\\
 \bottomrule
 \end{tabular}
+For the narrow tree, 8 levels is too much. If we had 8 levels there would be at least 3,543,122 × 11 = 38,974,342 pointers, but there are only 5,000,000 records. So it must be 7 levels. \\
+For the wide tree, 4 levels is too little. If we had 4 levels there would be at most 10,648 × 22 = 234,256 pointers, but there are 5,000,000 records. So it must be 5 levels.
 
 \item I will use B+ trees because the quantity involves range queries. Quickly locate all records within the interval through the traversal of the B+ tree structure.
 
