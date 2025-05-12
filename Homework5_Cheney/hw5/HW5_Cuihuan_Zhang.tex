@@ -64,15 +64,15 @@
 \begin{enumerate}
 \item 
 A dense index contains a dedicated pointer (index entry) for every unique key value in the data file (number of indexes = number of records).
-A sparse index contains pointers only for selected key values (e.g., the first key of each data block) (number of indexes < number of records). \\
+A sparse index contains pointers only for selected key values (e.g., the first key of each data block) (number of indexes smaller than number of records). \\
 For example: \\
 Block1: [ID=1, Alice] → [ID=2, Bob] \\
 Block2: [ID=3, Mary] → [ID=4, David] \\
 Dense index file: \\
-1 → Block1-Offset0 (Alice)  \\
-2 → Block1-Offset1 (Bob)  \\
-3 → Block2-Offset0 (Mary)  \\
-4 → Block2-Offset1 (David)  \\
+1 → Block1 (Alice)  \\
+2 → Block1 (Bob)  \\
+3 → Block2 (Mary)  \\
+4 → Block2 (David)  \\
 Sparse index file: \\
 1 → Block1  \\
 3 → Block2  \\
@@ -164,32 +164,30 @@ The smallest number of children are 11, and the largest number of children are 2
 
 \end{enumerate}
 
-\item Order of joins
+\item Computing A Join Of Two Tables
 \begin{itemize}
-    \item Table \( R \): 2000 blocks.
-    \item Table \( S \): 4000 blocks.
+    \item Table \( R \): 2,000 blocks.
+    \item Table \( S \): 4,000 blocks.
     \item Available RAM: 6 blocks (2 for \( R \), 4 for \( S \)).
 \end{itemize}
 
 \begin{enumerate}
 
-\item Partitioning for S
+\item Read 4 blocks of S into memory:
 \begin{align*}
-    \text {Each chunk of S uses 4 blocks.} \\
-    \text{Total outer chunks: } \frac{4000}{4} = 1000. \\
+    \frac{4,000}{4} = 1,000 \\
 \end{align*}
 
 
-\item Scanning S for Each Chunk of R
+\item Repeat for all subsets of 4 size of S, need to do it total of 1,000 times:
 \begin{align*}
-    \text {For each outer chunk (1000 total) and scan the entire R (2000 blocks).} \\
-    \text{Total cost for R: } 1000 \times 2000 = 2,000,000 \text{ blocks.} \\
+    1,000 \times 2000 = 2,000,000 \\
 \end{align*}
 
-\item Total Cost
-\[
-\text{Total Block Accesses} = 4,000 \,(S) + 2,000,000 \, (R) = \boxed{2,004,000}
-\]
+\item Total reads: 1 read of S + 1,000 read of R\\
+\begin{align*}
+    4,000 (S) + 2,000,000 (R) = \boxed{2,004,000}
+\end{align*}
 \end{enumerate}
 
 \end{enumerate}
