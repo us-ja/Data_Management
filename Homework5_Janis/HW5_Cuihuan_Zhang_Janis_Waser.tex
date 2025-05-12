@@ -66,7 +66,7 @@ Now, we can either have dense index and unclustered file or sparse index and clu
  The best solution is a sparse index and clustered file. It is still easy to find the key as you search the pointer which contains the range of it and you do not store all keys in the index. Not all the keys are in the index and therefore less storage and maintenance is required.
 \end{enumerate}
 \item \begin{enumerate}[label=\arabic*)] 
-\item We have 5 GiB on the disk this is $5\times 2^{30}$ bytes. Each block holds $256 = 2^8$Bytes. Therefore we have $\frac{5\times 2^{30}}{2^8}= 5\times 2^{22}= 1.25\times 2^{24}\leq 2^{25}$ blocks. We allocate 4 bytes to the block address(pointer size), which is little bit more than actually needed. 
+\item We have 5 GiB on the disk this is $5\times 2^{30}$ bytes. Each block holds $256 = 2^8$Bytes. Therefore we have $\frac{5\times 2^{30}}{2^8}= 5\times 2^{22}= 1.25\times 2^{24}\leq 2^{25}$ blocks. We round up to make easier calculation and ensure that all addresses can be covered. We allocate 4 bytes to the block address(pointer size), which is little bit more than actually needed. 
 
 Each node in the B-tree contains an amount m of pointers and (m-1) keys. The key size is 8 bytes from the ID. Therefore, the largest possible value for m can be calculated:
 
@@ -74,14 +74,14 @@ $ m \times (pointer size) + (m-1) \times (key size)\leq block size$
 
 $m \times 4+ (m-1) \times 8 \leq 256 \Leftrightarrow 12m\leq264\Leftrightarrow m\leq 22$
 
-We see the largest possible value of children is 22. This means the minimum number of children for internal nodes is 11. 
+We see the largest possible value of children is 22(no rounding necessary). This means the minimum number of children for internal nodes is 11. 
 \item 
 We have 5'000'000 records. 
 
 \begin{tabular}{lll}
-
+\hline
 Level & Nodes in a narrow tree (\(m=11\))& Nodes in a wide tree (\(m=22\))\\
-
+\hline
 1     & 1          & 1          \\
 2     & 2          & 22         \\
 3     & 22         & 484        \\
@@ -91,15 +91,22 @@ Level & Nodes in a narrow tree (\(m=11\))& Nodes in a wide tree (\(m=22\))\\
 7     & 322'102    & 113'379'904\\
 8     & 3'543'122  & 2'494'357'888\\
 9	& 38'974'342&54'875'873'536\\
-
+\hline
 \end{tabular}
 
+In the narrowest tree 8 levels with $3'543'122\times 11=38'974'342$ pointers are more then enough, 7 levels are actually enough as some nodes will have more then 11 nodes even though $ 322'102\times 11 = 3'543'122$ is less than the required 5 million. 
+
+In the widest tree 5 levels with $234'256 \times 22=5'153'632$ is a little bit too much but is also fine, since we have some fewer leaves coming out which is not violating the tree such that we have precisely 5 million pointers.  
+
+Therefore, the tree has a range of 5 to 7 levels.
+\item We are interested in range search. Hashing is a bad idea because with a good hash you would have to search all potential values in the range and if this is a continuous range, you would need search through every single file, if were to create secondary index for name this would be a good idea. In a $B^+$-tree on the other hand you could cluster easily on quantity and you have to access only a few blocks corresponding to the searched range. 
 
 \end{enumerate}
 
-\item The first option is to read R once and compare with S which needs to be done 1000 times (2000/2), this gives read R + read 500/4 S= 2000/2 + 1000*4000/4=1'001'000.
+\item We read R once and compare with S which needs to be done 1000 times (2000/2), this gives: read R + read 500/4 S= 2000 + 1000*4000/4=1'002'000.
 
-The other option is where you read S first and compare 1000 (4000/4) times with R  this gives read S+ read 1000 R= 4000/4+ 1000*2000/2=1'001'000. The second option is considerably worse hence we opt to read R and compare with S.
+We S once and compare with 
+%The other option is where you read S first and compare 1000 (4000/4) times with R  this gives read S+ read 1000 R= 4000/4+ 1000*2000/2=1'001'000. The second option is considerably worse hence we opt to read R and compare with S.
 \end{enumerate}
 \end{flushleft}
 \end {document}

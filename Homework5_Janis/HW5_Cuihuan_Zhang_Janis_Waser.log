@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  12 MAY 2025 12:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  12 MAY 2025 13:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1057,8 +1057,8 @@ hanged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33346 strings out of 474116
- 739814 string characters out of 5743682
+ 33347 strings out of 474116
+ 739821 string characters out of 5743682
  1938187 words of memory out of 5000000
  55251 multiletter control sequences out of 15000+600000
  565919 words of font info for 67 fonts, out of 8000000 for 9000
@@ -1072,10 +1072,10 @@ r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on HW5_Cuihuan_Zhang_Janis_Waser.pdf (4 pages, 131810 bytes).
+Output written on HW5_Cuihuan_Zhang_Janis_Waser.pdf (4 pages, 133434 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 19 named destinations out of 1000 (max. 500000)
+ 94 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
+ 20 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
