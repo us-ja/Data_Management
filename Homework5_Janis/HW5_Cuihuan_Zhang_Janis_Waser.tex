@@ -103,9 +103,9 @@ Therefore, the tree has a range of 5 to 7 levels.
 
 \end{enumerate}
 
-\item We read R once and compare with S which needs to be done 1000 times (2000/2), this gives: read R + read 500/4 S= 2000 + 1000*4000/4=1'002'000.
+\item We read R once and compare with S which needs to be done 1000 times (2000/2), this gives: read R + read 500/4 S$= 2000 + 1000\times4000=4'002'000$.
 
-We S once and compare with 
+We read S once and compare with R(4000/4 times ): $4000+ 1000 \times 2000=2'004'000$, since this option requires less operations we prefer this one.
 %The other option is where you read S first and compare 1000 (4000/4) times with R  this gives read S+ read 1000 R= 4000/4+ 1000*2000/2=1'001'000. The second option is considerably worse hence we opt to read R and compare with S.
 \end{enumerate}
 \end{flushleft}
