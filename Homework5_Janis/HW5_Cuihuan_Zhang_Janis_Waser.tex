@@ -94,7 +94,7 @@ Level & Nodes in a narrow tree (\(m=11\))& Nodes in a wide tree (\(m=22\))\\
 \hline
 \end{tabular}
 
-In the narrowest tree 8 levels with $3'543'122\times 11=38'974'342$ pointers are more then enough, 7 levels are actually enough as some nodes will have more then 11 nodes even though $ 322'102\times 11 = 3'543'122$ is less than the required 5 million. 
+In the narrowest tree 8 levels with $3'543'122\times 11=38'974'342$ pointers are more then enough, 7 levels are actually enough as some nodes will have more then 11 nodes even though $ 322'102\times 11 = 3'543'122$ is less than the required 5 million. Some nodes have more leaves to compensate.
 
 In the widest tree 5 levels with $234'256 \times 22=5'153'632$ is a little bit too much but is also fine, since we have some fewer leaves coming out which is not violating the tree such that we have precisely 5 million pointers.  
 
