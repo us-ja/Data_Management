@@ -21,10 +21,10 @@
  
  
 \title{Data Management Assignment 5}
-\author{Cuihuan Zhang \& Janis Waser} 
+\author{Janis Waser} 
 \fancyhead[L]{Data Management}
 \fancyhead[C]{Homework 5}
-\fancyhead[R]{Cuihuan Zhang \& Janis Waser}
+\fancyhead[R]{ Janis Waser}
 \renewcommand\headrulewidth{0pt}
 \pagestyle{fancy}
 \pagenumbering{arabic}
@@ -103,9 +103,9 @@ Therefore, the tree has a range of 5 to 7 levels.
 
 \end{enumerate}
 
-\item We read R once and compare with S which needs to be done 1000 times (2000/2), this gives: read R + read 500/4 S$= 2000 + 1000\times4000=4'002'000$.
+\item We have two options: Read R once and compare with S which needs to be done 1000 times (2000/2), this gives: read R + read 500/4 S$= 2000 + 1000\times4000=4'002'000$. But we can do better. 
 
-We read S once and compare with R(4000/4 times ): $4000+ 1000 \times 2000=2'004'000$, since this option requires less operations we prefer this one.
+We read S once and compare with R(4000/4 times ): $4000+ 1000 \times 2000=2'004'000$, since this option requires less operations we prefer this one. 
 %The other option is where you read S first and compare 1000 (4000/4) times with R  this gives read S+ read 1000 R= 4000/4+ 1000*2000/2=1'001'000. The second option is considerably worse hence we opt to read R and compare with S.
 \end{enumerate}
 \end{flushleft}
