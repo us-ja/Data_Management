@@ -54,7 +54,7 @@
 
 \item Scenarios when insertion from a sorted sequence would take log N + N operations: a sorted sequence requires log N using binary search to find the position, then move the rest of the data cost N when the sequence is compaction.
 
-\item Scenarios when insertion from a 2-3 tree would take log N operations when insertion a integer without insert a new node at the parent nodes. Just find the position (node) and insert the value when the node has null value of the block or at the bottom level at bubble up.
+\item Scenarios when insertion from a 2-3 tree would take log N operations when insertion a integer without insert a new node at the parent nodes. Just find the position (node) and insert the value when the node has null value of the block or at the bottom level and bubble up.
 \end{enumerate}
 
 \item
@@ -174,7 +174,9 @@ For the wide tree, 4 levels is too little. If we had 4 levels there would be at 
 \end{itemize}
 
 \begin{enumerate}
+\item Method 1
 
+\begin{enumerate}
 \item Read 4 blocks of S into memory:
 \begin{align*}
     \frac{4,000}{4} = 1,000 \\
@@ -190,6 +192,31 @@ For the wide tree, 4 levels is too little. If we had 4 levels there would be at 
 \begin{align*}
     4,000 (S) + 2,000,000 (R) = \boxed{2,004,000}
 \end{align*}
+\end{enumerate}
+
+\item Method 2
+
+\begin{enumerate}
+\item Read 2 blocks of R into memory:
+\begin{align*}
+    \frac{2,000}{2} = 1,000 \\
+\end{align*}
+
+
+\item Repeat for all subsets of 2 size of R, need to do it total of 1,000 times:
+\begin{align*}
+    1,000 \times 4000 = 4,000,000 \\
+\end{align*}
+
+\item Total reads: 1,000 read of S + 1 read of R\\
+\begin{align*}
+    2,000 (R) + 4,000,000 (S) = \boxed{4,002,000}
+\end{align*}
+\end{enumerate}
+
+
+Therefore, without sorting the data, the total number of block reads required to execute the given query in the most efficient way is 2,004,000.
+
 \end{enumerate}
 
 \end{enumerate}
