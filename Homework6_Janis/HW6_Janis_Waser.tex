@@ -39,7 +39,7 @@
 \begin{enumerate}[label=\textbf{\Alph*.}]
 
 \item 
-\begin{enumerate}[label=\arabic*)]
+\begin{enumerate}[label=\arabic*.]
 \item \begin{enumerate}[label=(\alph*)]
 \item Transaction 4 (T4) is needs to be redone, it committed after the last checkpoint and therefore this transaction must be reflected in the final state.
 \item Transactions 2 and 3 started before the checkpoint but did not commit, they have to be undone. As well as transactions T5 and T6 who did not commit and therefore need to be undone. T6 has yet made a operation as in our system the log is ahead of anything, so theoretically you can ignore 6 as nothing can be undone.
@@ -55,17 +55,21 @@ Finally, c can be 0 or 1 as it is changed only after the checkpoint and again we
 \end{enumerate}
 \end{enumerate}
 \item 
-\begin{enumerate}[label=\arabic*)]
+\begin{enumerate}[label=\arabic*.]
+\item \begin{enumerate}[label=(\alph*)]
+\item A database history is recoverable if every transaction commits only after all transactions from whom values are read, are already committed. More precisely, the commit of a transaction has to be after all commits of the transaction from whom values are read during this transaction. 
+\item A database history is cascadeless if every transaction only reads values from other transaction who have already committed. If a transaction reads a value who was written by a transaction that has not committed then it is not cascadeless.
+\item
+\end{enumerate}
 \item \begin{enumerate}[label=(\alph*)]
 \item
 \item
 \end{enumerate}
+\end{enumerate}
 \item \begin{enumerate}[label=(\alph*)]
 \item
 \item
 \end{enumerate}
-\end{enumerate}
-\item 
 
 \end{enumerate}
 \end{flushleft}
