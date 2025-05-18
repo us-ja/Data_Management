@@ -41,21 +41,32 @@
 \item 
 \begin{enumerate}[label=\arabic*)]
 \item \begin{enumerate}[label=(\alph*)]
-\item Transaction
+\item Transaction 4 (T4) is needs to be redone, it committed after the last checkpoint and therefore this transaction must be reflected in the final state.
+\item Transactions 2 and 3 started before the checkpoint but did not commit, they have to be undone. As well as transactions T5 and T6 who did not commit and therefore need to be undone. T6 has yet made a operation as in our system the log is ahead of anything, so theoretically you can ignore 6 as nothing can be undone.
+\item T1 and T2 have committed before the last checkpoint, thus they are not affected by the crash.
+\end{enumerate}
+ \item \begin{enumerate}[label=(\alph*)] 
+\item The possible values of a are 1 or 2, before the last checkpoint it was changed to 1 and after it it was again changed to 2. 
+
+The possible values for b are 2 or 3. The checkpoint insures that after it the disk contains 2 and then b is altered to 3, which we do not know if it actually gets written to the disk. 
+
+Finally, c can be 0 or 1 as it is changed only after the checkpoint and again we cannot know whether the value 1 was written on the disk before the crash. 
+\item T1 is ignored, T2 needs to be redone and transaction 3 and 4 undone. Therefore the values of a, b, c are: a=2, b=2, c=0. 
+\end{enumerate}
+\end{enumerate}
+\item 
+\begin{enumerate}[label=\arabic*)]
+\item \begin{enumerate}[label=(\alph*)]
 \item
-\item T1 and T1 have committed before the last checkpoint, thus they are not affected by the crash.
+\item
 \end{enumerate}
-\item 
-\item 
+\item \begin{enumerate}[label=(\alph*)]
+\item
+\item
 \end{enumerate}
-\item \begin{enumerate}[label=\arabic*)] 
-\item 
-\item 
+\end{enumerate}
 \item 
 
-\end{enumerate}
-
-\item 
 \end{enumerate}
 \end{flushleft}
 \end {document}
