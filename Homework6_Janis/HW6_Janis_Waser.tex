@@ -59,7 +59,7 @@ Finally, c can be 0 or 1 as it is changed only after the checkpoint and again we
 \item \begin{enumerate}[label=(\alph*)]
 \item A database history is recoverable if every transaction commits only after all transactions from whom values are read, are already committed. More precisely, the commit of a transaction has to be after all commits of the transaction from whom values are read during this transaction. 
 \item A database history is cascadeless if every transaction only reads values from other transaction who have already committed. If a transaction reads a value who was written by a transaction that has not committed then it is not cascadeless.
-\item
+\item The schedule is strict if a transaction only changes(writes) values who have already committed in all transaction who write to this value.  
 \end{enumerate}
 \item \begin{enumerate}[label=(\alph*)]
 \item
