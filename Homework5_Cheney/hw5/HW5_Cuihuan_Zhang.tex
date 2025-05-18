@@ -49,7 +49,7 @@
 
 \begin{enumerate}
 \item Scenarios when insertion from a heap would take 1 operation when the new record is directly insert in front (such like the head of a linked list) or null value of the block, without access the other data.
-\item Scenarios when insertion from a heap would take N operations when the heap is compaction or cannot easily access the back of the heap. For example, insert the value in between, then we need to move the rest of the data.
+\item Scenarios when insertion from a heap would take N operations when the heap is compaction or cannot easily access the back of the heap (no pointer to the end).
 \end{enumerate}
 
 \item Scenarios when insertion from a sorted sequence would take log N + N operations: a sorted sequence requires log N using binary search to find the position, then move the rest of the data cost N when the sequence is compaction.
