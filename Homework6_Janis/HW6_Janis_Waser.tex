@@ -58,16 +58,27 @@ Finally, c can be 0 or 1 as it is changed only after the checkpoint and again we
 \begin{enumerate}[label=\arabic*.]
 \item \begin{enumerate}[label=(\alph*)]
 \item A database history is recoverable if every transaction commits only after all transactions from whom values are read, are already committed. More precisely, the commit of a transaction has to be after all commits of the transaction from whom values are read during this transaction. 
-\item A database history is cascadeless if every transaction only reads values from other transaction who have already committed. If a transaction reads a value who was written by a transaction that has not committed then it is not cascadeless.
-\item The schedule is strict if a transaction only changes(writes) values who have already committed in all transaction who write to this value.  
+\item A database history is cascadeless if every transaction only reads values from other transactions who have already committed. If a transaction reads a value who was written by a transaction that has not committed then it is not cascadeless.
+\item The schedule is strict if a transaction only changes(writes) values who have already committed in all transaction who write to this value and also satiesfies the condition for avoiding cascading aborts(no read from values whose transaction has not committed yet)
 \end{enumerate}
 \item \begin{enumerate}[label=(\alph*)]
-\item
-\item
+\item It is recoverable as long as T2 commits before T4. y is only written once and this is after being read. z is only read and written by T5 after T3 has committed. 
+
+It is not cascadeless as T2 writes x and without commit of T2, x is read by T4. 
+
+As this schedule already violates the constraint for cascading aborts, it cannot be strict, but the rest would actually be strict as x, y, z are only written once.
+\item This history is not recoverable as T1 writes to b, never commits and T4 reads x and writes and commits. 
+
+This history is not cascadeless for the same reason as above but it does not matter whether T4 commits before T1 or not. 
+
+This history cannot be strict as it is not cascadeless and T1 writes to x after T2 wrote to x without committing/aborting.
 \end{enumerate}
 \end{enumerate}
 \item \begin{enumerate}[label=(\alph*)]
-\item
+\item We draw the conclict graph instruction by instruction and simplify by only considering the transactions: \includegraphics[width=\linewidth]{graph_a}
+We see that the graph is acyclic. There are 3 possible sequences: We can start with either T1 or T3. If we start with T3, we can again choose between T1 and T5. If we start with T1 then the order is predetermined. This gives us the following possible serial schedules: $[T1, T3, T5, T2, T4 ] \quad or\quad [T3, T1, T5, T2, T4 ] \quad or \quad  [T3,  T5, T1,T2, T4 ] $
+We can see that all this orders work:
+ \includegraphics[width=\linewidth]{serial_example_a}
 \item
 \end{enumerate}
 
