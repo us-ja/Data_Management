@@ -121,6 +121,20 @@ Strict: T1, T2 and T4 violates strictness. T1 writes b before T2 committed write
 
 \item
 
+\begin{enumerate}
+
+\item The schedule is serializable (no cycle), the serial equivalent can be [T1, T3, T5, T2, T4] or [T3, T5, T1, T2, T4].\\
+\item The schedule is not serializable, in any order of [T1, T2, T4, T3, T5], [T2, T1, T4, T3, T5] etc. Always a conflict between [T1, T2] since it is a cycle. \\
+Note: conflict graphs and examples are on the next page.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{hw6_c.drawio.png}
+  \caption{Serializability of concurrent transactions}
+\end{figure}
+
+\end{enumerate}
+
 \end{enumerate}
 \end{flushleft}
 \end {document}
