@@ -20,10 +20,10 @@
 
  
  
-\title{Data Management Assignment 5}
+\title{Data Management Assignment 6}
 \author{Janis Waser} 
 \fancyhead[L]{Data Management}
-\fancyhead[C]{Homework 5}
+\fancyhead[C]{Homework 6}
 \fancyhead[R]{ Janis Waser}
 \renewcommand\headrulewidth{0pt}
 \pagestyle{fancy}
@@ -79,7 +79,9 @@ This history cannot be strict as it is not cascadeless and T1 writes to x after 
 We see that the graph is acyclic. There are 3 possible sequences: We can start with either T1 or T3. If we start with T3, we can again choose between T1 and T5. If we start with T1 then the order is predetermined. This gives us the following possible serial schedules: $[T1, T3, T5, T2, T4 ] \quad or\quad [T3, T1, T5, T2, T4 ] \quad or \quad  [T3,  T5, T1,T2, T4 ] $
 We can see that all this orders work:
  \includegraphics[width=\linewidth]{serial_example_a}
-\item
+\item We repeat the same process to get the serialisablility graph:
+ \includegraphics[width=\linewidth]{graph_b}
+ We see that there exists a circle from T1 to T2. In whatever order we put T1 and T2, we will create a problem e.g. the example $[T3,  T5, T1,T2, T4 ] $ has a conflict (shown in red).
 \end{enumerate}
 
 \end{enumerate}
