@@ -42,7 +42,7 @@
 \begin{enumerate}[label=\arabic*.]
 \item \begin{enumerate}[label=(\alph*)]
 \item Transaction 4 (T4) is needs to be redone, it committed after the last checkpoint and therefore this transaction must be reflected in the final state.
-\item Transactions 2 and 3 started before the checkpoint but did not commit, they have to be undone. As well as transactions T5 and T6 who did not commit and therefore need to be undone. T6 has yet made a operation as in our system the log is ahead of anything, so theoretically you can ignore 6 as nothing can be undone.
+\item Transactions 2 and 3 started before the checkpoint but did not commit, they have to be undone. As well as transactions T5 and T6 who did not commit and therefore need to be undone. T6 has not yet made a operation as in our system the log is ahead of any operation, so theoretically you can ignore 6 as no operation can be undone.
 \item T1 and T2 have committed before the last checkpoint, thus they are not affected by the crash.
 \end{enumerate}
  \item \begin{enumerate}[label=(\alph*)] 
