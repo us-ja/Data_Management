@@ -61,7 +61,7 @@ T6     & Undo   \\
 
 \item T4 needs to be Redo, since T4 is committed after the checkpoint.
 \item Obviously, T3, T5 and T6 are uncommitted items, so we need to Undo them.
-\item T1 and T2 is not affected by the failure since T1 and T2 are committed before the checkpoints. The modifications of T1 and T2 have been persisted to the disk through checkpoints.
+\item T1 and T2 are not affected by the failure since T1 and T2 are committed before the checkpoints. The modifications of T1 and T2 have been persisted to the disk through checkpoints.
 \end{enumerate}
 
 \item
@@ -123,7 +123,7 @@ Strict: T1, T2 and T4 violates strictness. T1 writes b before T2 committed write
 
 \begin{enumerate}
 
-\item The schedule is serializable (no cycle), the serial equivalent can be [T1, T3, T5, T2, T4] or [T3, T5, T1, T2, T4].\\
+\item The schedule is serializable (no cycle), the serial equivalent can be [T1, T3, T5, T2, T4] or [T3, T5, T1, T2, T4] or [T3, T1, T5, T2, T4].\\
 \item The schedule is not serializable, in any order of [T1, T2, T4, T3, T5], [T2, T1, T4, T3, T5] etc. Always a conflict between [T1, T2] since it is a cycle. \\
 Note: conflict graphs and examples are on the next page.
 
