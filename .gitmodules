@@ -1,6 +1,3 @@
 [submodule "dm-spark-tpcxbb"]
 	path = dm-spark-tpcxbb
 	url = https://github.com/swystems/dm-spark-tpcxbb
-[submodule "Homework7/dm-spark-tpcxbb"]
-	path = Homework7/dm-spark-tpcxbb
-	url = https://github.com/swystems/dm-spark-tpcxbb
